@@ -11,7 +11,8 @@ exports.calculate = function(req, res) {
   });
 
   var operations = {
-     'add': function(a,b) { return a + b },
+     'add': function(a,b) { return +a + +b},
+    // Using + operator to type cast variables as integers in order to prevent string concatenation
     'subtract': function(a,b) { return a - b },
     'multiply': function(a,b) { return a * b },
     'divide':   function(a,b) { return a / b },
@@ -47,4 +48,4 @@ exports.calculate = function(req, res) {
   var operand2 = parseInt(req.query.operand2, 10);
 
   res.json({ result: operation(req.query.operand1, req.query.operand2) });
-}
+};
